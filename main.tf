@@ -5,10 +5,11 @@ provider "aws" {
 }
 
 resource "aws_instance" "ec2" {
+  count = "${var.instance_count}"
   ami = "${var.ami}"
   instance_type = "${var.instance_type}"
   security_groups = ["${aws_security_group.allow_ssh.name}"]
   tags {
-      name="ubuntu-vm"
+      name="${element(var.instance_tag_name, count.index) }"
   }
 }
