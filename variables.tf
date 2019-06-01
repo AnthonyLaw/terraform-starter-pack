@@ -21,3 +21,6 @@ variable "instance_tag_name" {
 }
 
 
+variable "keypair_name" {
+  default = "aws-keypair"
+}
